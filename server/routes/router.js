@@ -30,7 +30,16 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('got to task-post');
     console.log(req.body);
-    res.sendStatus(201);
+    let queryText=`INSERT INTO "tasks" ("text")
+    VALUES ($1); `
+    pool.query(queryText, [req.body.text])
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log(`Error adding new task`, error);
+      res.sendStatus(500);
+    });
 })
 
 

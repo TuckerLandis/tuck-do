@@ -51,10 +51,15 @@ function refreshTasks() {
 } // end refreshTasks
 
 function renderTasks(tasks) {
+    console.log(tasks);
+    $('#tasks-table').empty();
     tasks.forEach(task => {
-        $('#tasks-list').empty();
-        $('#tasks-list').append(`
-        <li data-id=${task.id}> ${task.text} </li>
+       
+        $('#tasks-table').append(`
+            <tr>
+                    <td>${task.text}</td>
+                    <td><button class="complete-button"> ✔️ </button></td>
+             </tr>
         `)
     });
 }
