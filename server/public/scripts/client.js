@@ -29,7 +29,9 @@ function addTask () {
     })
 } 
 
-
+// function() {
+//     $( "#datepicker" ).datepicker();
+//   };
 
 /**Creates a new object for a task, and sets it's .text to the input with id 'text-in', then returns that object
  */
