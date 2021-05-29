@@ -53,12 +53,29 @@ router.put('/', (req, res) => {
     console.log('got to task-put');
     
     
+    
     res.sendStatus(202);
 })
+
+
+
 // DELETE
 router.delete('/', (req, res) => {
     console.log('got to tasks-delete');
-    res.sendStatus(202);
+    console.log(req.body);
+    let deleteID = req.body.id
+
+    let queryText = `DELETE FROM "tasks" WHERE "tasks".id = ${deleteID};`;
+
+    pool.query(queryText)
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch(error => {
+      console.log(`Error deleting task`, error);
+      res.sendStatus(500);
+    });
+
 })
 
 

@@ -9,6 +9,8 @@ $( document ).ready( function(){
 
 function clickListeners () {
     $('#submit-btn').on('click', addTask);
+    $('#tasks-table').on('click', '.complete-btn', completeTask);
+    $('#tasks-table').on('click', '.delete-btn', deleteTask);
 }
 
 /**This function takes the task object created in createTaskObject and sends it to the server via an ajax POST, then empties the input
@@ -37,6 +39,27 @@ function createTaskObject() {
     return created;
 }
 
+function deleteTask() {
+    console.log('deleteclick');
+    console.log($(this).data('id'));
+    let taskID = $(this).data('id');
+
+    $.ajax({
+        method: 'DELETE',
+        url: '/tasks',
+        data: {id: taskID}
+    }).then(response => {
+        refreshTasks();
+    })
+
+
+    
+}
+function completeTask(){
+    console.log('completeclick');
+    
+}
+
 
 function refreshTasks() {
     console.log('refreshing tasks');
@@ -54,12 +77,14 @@ function renderTasks(tasks) {
     console.log(tasks);
     $('#tasks-table').empty();
     tasks.forEach(task => {
-       
+       //// big genius moment have variable set to if complete for class, only one append
         $('#tasks-table').append(`
             <tr>
                     <td>${task.text}</td>
-                    <td><button class="complete-button"> ✔️ </button></td>
+                    <td><button class="complete-btn" data-id="${task.id}"> ✔️ </button></td>
+                    <td><button class="delete-btn" data-id="${task.id}"> ❌ </button></td>
              </tr>
         `)
     });
 }
+
