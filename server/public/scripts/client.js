@@ -1,5 +1,6 @@
 console.log('JS');
 
+
 $( document ).ready( function(){
     console.log('JQ');
     clickListeners();
@@ -12,21 +13,23 @@ function clickListeners () {
     $('#tasks-table').on('click', '.delete-btn', deleteTask);
 }
 
-/**Takes the task object created in createTaskObject and sends it to the server via an ajax POST, then empties the input
+/**Takes the return of createTaskObject and sends it to the server via an ajax POST, then empties the input
  */
 function addTask () {
     
     newTask = createTaskObject();
-    
+     
     $.ajax({
         method: 'POST',
         url: '/tasks',
         data: newTask
     }).then(response => {
-        $('text-in').val('');
+        $('#text-in').val('');
         refreshTasks();
     })
 } 
+
+
 
 /**Creates a new object for a task, and sets it's .text to the input with id 'text-in', then returns that object
  */
@@ -43,13 +46,30 @@ function deleteTask() {
     console.log($(this).data('id'));
     let taskID = $(this).data('id');
 
-    $.ajax({
-        method: 'DELETE',
-        url: '/tasks',
-        data: {id: taskID}
-    }).then(response => {
-        refreshTasks();
-    })
+    Swal.fire({
+        title: 'Did you really do it?',
+        text: "Nice job",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: 'DELETE',
+                url: '/tasks',
+                data: {id: taskID}
+            }).then(response => {
+                refreshTasks();
+            })
+
+        }
+      })
+
+
+    
+    
 }
 
 function completeTask(){
@@ -88,7 +108,6 @@ function renderTasks(tasks) {
    
     $('#tasks-table').empty();
     tasks.forEach(task => {
-       //// big genius moment have variable set to if complete for class, only one append
 
        if(task.complete){
         completeClass = "complete"
@@ -96,14 +115,11 @@ function renderTasks(tasks) {
         completeClass = "incomplete"
     }
 
-
-
-
         $('#tasks-table').append(`
-            <tr class="${completeClass}">
+            <tr class="${completeClass} space">
                     <td>${task.text}</td>
-                    <td><button class="complete-btn" data-id="${task.id}"> ✔️ </button></td>
-                    <td><button class="delete-btn" data-id="${task.id}"> ❌ </button></td>
+                    <td><button class="complete-btn btn btn-success" data-id="${task.id}"> ✔️ </button></td>
+                    <td><button class="delete-btn btn btn-danger" data-id="${task.id}"> ❌ </button></td>
              </tr>
         `)
 
@@ -111,4 +127,6 @@ function renderTasks(tasks) {
 
     });
 }
+
+
 

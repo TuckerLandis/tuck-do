@@ -8,7 +8,7 @@ const pg = require('pg')
 // GET
 router.get('/', (req, res) => {
     console.log('got to tasks-get');
-    let queryText = 'SELECT * FROM "tasks"'; //order by time due here?
+    let queryText = `SELECT * FROM "tasks" ORDER BY "complete" ASC;` //order by time due here?
     pool.query(queryText).then(result => {
       
       res.send(result.rows);
@@ -71,7 +71,7 @@ router.put('/:id', (req, res) => {
 
 
 // DELETE
-router.delete('/tasks', (req, res) => {
+router.delete('/', (req, res) => {
     console.log('got to tasks-delete');
     console.log(req.body);
     let deleteID = req.body.id

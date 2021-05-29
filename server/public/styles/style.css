@@ -1,3 +1,71 @@
 .complete {
-    background-color: green;    
+    background-color:lavender;    
+    opacity: 0.75;
+    width: 70%;
+    height: 2em;
+    border: 10px solid white;
+    text-decoration: line-through;
+}
+
+.incomplete {  
+    width: 70%;
+    height: 2em;
+    background-color: silver;
+    border: 1px solid lightblue;
+    box-shadow: 3px 3px 3px skyblue;
+
+    
+    
+}
+
+#form-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+#tasks-box{
+    display: flexbox;
+   
+}
+
+table{
+    margin: auto;
+}
+
+#text-in{
+    width: 70%;
+    
+}
+
+header{
+    background-color: silver;
+    box-shadow:3px 3px 3px skyblue;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+
+
+tr.space>td {
+    padding: 1em;
+    max-width: fit-content;
+  }
+
+#submit-btn{
+    width: 3em;
+    background-color: silver;
+    border:2px solid lightslategrey;
+    box-shadow: 3px 3px 3px skyblue;
+    margin-left: 1em;
+    margin-right: 1em;
+
+}
+
+#date-pick-p{
+    margin-left: 1em;
+}
+
+h1 {
+    font-size: 20px;
 }
