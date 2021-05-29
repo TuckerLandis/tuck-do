@@ -49,18 +49,29 @@ router.post('/', (req, res) => {
 
 
 // PUT
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     console.log('got to task-put');
+    console.log('completing', req.params.id);
+
+    let queryText = `UPDATE "tasks" SET "complete"='true'  WHERE "tasks".id = $1;`;
+    
+    pool.query(queryText, [req.params.id])
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch(error => {
+      console.log(`Error deleting task`, error);
+      res.sendStatus(500);
+    });
     
     
     
-    res.sendStatus(202);
 })
 
 
 
 // DELETE
-router.delete('/', (req, res) => {
+router.delete('/tasks', (req, res) => {
     console.log('got to tasks-delete');
     console.log(req.body);
     let deleteID = req.body.id

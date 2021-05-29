@@ -1,6 +1,5 @@
 console.log('JS');
 
-
 $( document ).ready( function(){
     console.log('JQ');
     clickListeners();
@@ -13,12 +12,11 @@ function clickListeners () {
     $('#tasks-table').on('click', '.delete-btn', deleteTask);
 }
 
-/**This function takes the task object created in createTaskObject and sends it to the server via an ajax POST, then empties the input
+/**Takes the task object created in createTaskObject and sends it to the server via an ajax POST, then empties the input
  */
 function addTask () {
-    console.log('adding task');
+    
     newTask = createTaskObject();
-    console.log(newTask);
     
     $.ajax({
         method: 'POST',
@@ -28,9 +26,9 @@ function addTask () {
         $('text-in').val('');
         refreshTasks();
     })
-} // end addTask
+} 
 
-/**This function creates a new object for a task, and sets it's .text to the input with id 'text-in', then returns that object
+/**Creates a new object for a task, and sets it's .text to the input with id 'text-in', then returns that object
  */
 function createTaskObject() {
     created = {
@@ -38,7 +36,8 @@ function createTaskObject() {
     }
     return created;
 }
-
+/**Deletes a task in the datatable by selecting it's id from the associated html button, included upon render, see below
+ */
 function deleteTask() {
     console.log('deleteclick');
     console.log($(this).data('id'));
@@ -51,16 +50,24 @@ function deleteTask() {
     }).then(response => {
         refreshTasks();
     })
-
-
-    
 }
+
 function completeTask(){
     console.log('completeclick');
-    
+    let taskID = $(this).data('id');
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${taskID}`,
+     })
+     
+     //then(response => {
+       // console.log('GET response:', response);
+       // renderTasks(response)
+    //  })
 }
 
-
+/**Performs a simple GET to refresh the tasks, and calls renderTasks
+ */
 function refreshTasks() {
     console.log('refreshing tasks');
 
@@ -73,6 +80,9 @@ function refreshTasks() {
      })
 } // end refreshTasks
 
+/** Takes in a parameter of the response of the above GET, and loops over it, appending td with the text, buttons including the id
+ * @param  {} tasks
+ */
 function renderTasks(tasks) {
     console.log(tasks);
     $('#tasks-table').empty();
