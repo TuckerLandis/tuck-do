@@ -60,10 +60,8 @@ function completeTask(){
         url: `/tasks/${taskID}`,
      })
      
-     //then(response => {
-       // console.log('GET response:', response);
-       // renderTasks(response)
-    //  })
+     refreshTasks();
+   
 }
 
 /**Performs a simple GET to refresh the tasks, and calls renderTasks
@@ -85,16 +83,32 @@ function refreshTasks() {
  */
 function renderTasks(tasks) {
     console.log(tasks);
+    
+    let completeClass
+   
     $('#tasks-table').empty();
     tasks.forEach(task => {
        //// big genius moment have variable set to if complete for class, only one append
+
+       if(task.complete){
+        completeClass = "complete"
+    } else {
+        completeClass = "incomplete"
+    }
+
+
+
+
         $('#tasks-table').append(`
-            <tr>
+            <tr class="${completeClass}">
                     <td>${task.text}</td>
                     <td><button class="complete-btn" data-id="${task.id}"> ✔️ </button></td>
                     <td><button class="delete-btn" data-id="${task.id}"> ❌ </button></td>
              </tr>
         `)
+
+       
+
     });
 }
 
