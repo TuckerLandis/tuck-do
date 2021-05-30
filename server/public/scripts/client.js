@@ -143,18 +143,25 @@ function renderTasks(tasks) {
 
 
         $('#tasks-table').append(`
-            <tr class="${setClass} tdc">
-                    <td>${task.text}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+            <tr class="${setClass} tdc space">
+                <td class="task-text">${task.text}</td>
+                <td></td>
+                <td></td>
+                <td><button class="complete-btn btn btn-success box-shadow" data-id="${task.id}"> ✔️ </button></td>
              </tr>
              
-             <tr class="${setClass} tdc">
-             <td>${d}</td>
-             <td><button class="complete-btn btn btn-success" data-id="${task.id}"> ✔️ </button></td>
-             <td><button class="delete-btn btn btn-danger" data-id="${task.id}"> ❌ </button></td>
+             <tr class="${setClass} tdc space">
+                <td class="task-date"> Due: ${d}</td>
+                 <td></td>
+                 <td></td>
+                 <td><button class="delete-btn btn btn-danger box-shadow" data-id="${task.id}"> ✖ </button> </td>
              </tr>
+            <tr class="data-space">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            <tr>
         `)
 
 

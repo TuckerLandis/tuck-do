@@ -1,6 +1,6 @@
 
 body {
-    background-color: lightgrey;
+    background-color: #d7ebecc0;
 }
 
 #form-box{
@@ -17,10 +17,13 @@ body {
 
 table{
     margin: auto;
+    /* border-collapse: separate;
+    border-spacing: 0 15px; */
 }
 
 #text-in{
     width: 50%;
+    box-shadow: 3px 3px 3px gray;
     
 }
 
@@ -29,18 +32,20 @@ header{
     box-shadow:3px 3px 3px skyblue;
     padding: 1em;
     margin-bottom: 2em;
+    text-align: center;
 }
 
 #datepicker {
     padding-top: 1em;
     margin-top: 1em;
     height: 50%;
-    width: 50%
+    width: 50%;
+    box-shadow: 3px 3px 3px gray
 }
 
 tr.space>td {
-    margin: 2em;
-    padding: 1em;
+    margin: 1em;
+    padding: 0.5em;
     max-width: fit-content;
   }
 
@@ -57,20 +62,20 @@ tr.space>td {
 #date-pick-p{
     padding-top: 1em;
     margin-top: 1em;
-    margin-left: 1em;    
-    text
+    margin-left: 1em; 
+
 }
 
 h1 {
-    font-size: 20px;
+    font-size: 32pt;
+    text-shadow: 2px 2px paleturquoise;
 }
 
 
 .tdc {
     width: 70%;
     height: 2em;
-    background-color: rgba(210, 245, 250, 0.411);
-    border: 20px solid white;
+    background-color: #96d7da;
 
 }
 
@@ -78,15 +83,31 @@ h1 {
     opacity: 0.5;
     width: 60%;
     height: 2em;
-    /* border: 20px solid white; */
     text-decoration: line-through;
     background-color: lightpink;  
 }
 
 .due{
-    width: 70%;
+    width: 60%;
     height: 2em;
-    border: 20px solid white;
+    border-spacing: 20px;
     background-color: lightgoldenrodyellow;
 
+}
+
+.data-space{
+    height: 2em;
+    background-color: #d7ebecc0;
+}
+
+.box-shadow{
+    box-shadow: 3px 3px 3px gray;
+}
+
+.task-text{
+    font-size: 18pt;
+}
+
+.task-date{
+    font-size: 10pt;
 }
