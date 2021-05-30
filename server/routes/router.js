@@ -8,7 +8,7 @@ const pg = require('pg')
 // GET
 router.get('/', (req, res) => {
     console.log('got to tasks-get');
-    let queryText = `SELECT * FROM "tasks" ORDER BY "dueDate" ASC;` //order by time due here?
+    let queryText = `SELECT * FROM "tasks" ORDER BY "dueDate" DESC;` //order by time due here?
     pool.query(queryText).then(result => {
       
       res.send(result.rows);
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('got to task-post');
     console.log(req.body);
-    let queryText=`INSERT INTO "tasks" ("text", "due-date")
+    let queryText=`INSERT INTO "tasks" ("text", "dueDate")
     VALUES ($1, $2); `
     pool.query(queryText, [req.body.text, req.body.date])
     .then(result => {

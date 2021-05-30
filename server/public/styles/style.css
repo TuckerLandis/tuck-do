@@ -69,3 +69,12 @@ tr.space>td {
 h1 {
     font-size: 20px;
 }
+
+.due-today{
+    border:4px dashed yellow;
+    width: 70%;
+    height: 2em;
+    background-color: silver;
+   
+    box-shadow: 5px 5px 5px black;
+}
