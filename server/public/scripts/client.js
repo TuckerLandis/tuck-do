@@ -148,6 +148,7 @@ console.log('set class is ', setClass);
                     <td>${d}</td>
                     <td><button class="complete-btn btn btn-success" data-id="${task.id}"> ✔️ </button></td>
                     <td><button class="delete-btn btn btn-danger" data-id="${task.id}"> ❌ </button></td>
+                    
              </tr>
              
         `)
@@ -187,7 +188,9 @@ function completeCheck(task){
     } else {
         return false;
     }
-
 }
 
 
+function dateCompletedCheck () {
+    
+}

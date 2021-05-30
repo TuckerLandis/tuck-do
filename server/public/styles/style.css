@@ -1,4 +1,7 @@
 
+body {
+    background-color: lightgrey;
+}
 
 #form-box{
     display: flex;
@@ -17,17 +20,23 @@ table{
 }
 
 #text-in{
-    width: 65%;
+    width: 50%;
     
 }
 
 header{
-    background-color: silver;
+    background-color: rgb(134, 133, 133);
     box-shadow:3px 3px 3px skyblue;
     padding: 1em;
     margin-bottom: 2em;
 }
 
+#datepicker {
+    padding-top: 1em;
+    margin-top: 1em;
+    height: 50%;
+    width: 50%
+}
 
 tr.space>td {
     margin: 2em;
@@ -46,63 +55,38 @@ tr.space>td {
 }
 
 #date-pick-p{
-    margin-left: 1em;
+    padding-top: 1em;
+    margin-top: 1em;
+    margin-left: 1em;    
+    text
 }
 
 h1 {
     font-size: 20px;
 }
 
-/* .due-today{
-    border:4px dashed yellow;
-    width: 70%;
-    height: 2em;
-    background-color: silver;
-   
-box-shadow: 5px 5px 5px black;
-} */
-
-/* .complete {
-    background-color:lavender;    
-    opacity: 0.75;
-    width: 70%;
-    height: 2em;
-    border: 10px solid white;
-    text-decoration: line-through;
-}
-
-.incomplete {  
-    width: 70%;
-    height: 2em;
-    background-color: silver;
-    border: 1px solid lightblue;
-    box-shadow: 3px 3px 3px skyblue;
-    
-} */
 
 .tdc {
     width: 70%;
     height: 2em;
     background-color: rgba(210, 245, 250, 0.411);
     border: 20px solid white;
-    box-shadow: 3px 3px 3px skyblue;
 
 }
 
 .complete {
-    opacity: 0.75;
+    opacity: 0.5;
     width: 60%;
     height: 2em;
-    border: 20px solid white;
+    /* border: 20px solid white; */
     text-decoration: line-through;
     background-color: lightpink;  
-    box-shadow: 3px 3px 3px skyblue;
 }
 
 .due{
     width: 70%;
     height: 2em;
     border: 20px solid white;
-   
-    
+    background-color: lightgoldenrodyellow;
+
 }
