@@ -120,15 +120,15 @@ function renderTasks(tasks) {
 
         task.dueDate = new Date(task.dueDate); // changes sql date to JS date, this is weird, moment is likely better, as seen in duecheck function
         let d = task.dueDate
-        
+
 
         let setClass = '';
 
-        if(dueCheck(task)) {
-           setClass = ' due '
+        if (dueCheck(task)) {
+            setClass = ' due '
         }
         if (completeCheck(task)) {
-            setClass = ' complete ' 
+            setClass = ' complete '
         }
 
         let options = {
@@ -138,8 +138,8 @@ function renderTasks(tasks) {
         };
         d = d.toLocaleString('default', options); // sets date to just day and month, with weekday included
 
-       
-console.log('set class is ', setClass);
+
+        console.log('set class is ', setClass);
 
 
         $('#tasks-table').append(`
@@ -148,8 +148,6 @@ console.log('set class is ', setClass);
                     <td></td>
                     <td></td>
                     <td></td>
-                   
-                    
              </tr>
              
              <tr class="${setClass} tdc">
@@ -188,8 +186,8 @@ function dueCheck(task) {
 
 }
 
-function completeCheck(task){
-    if(task.complete){
+function completeCheck(task) {
+    if (task.complete) {
         return true;
     } else {
         return false;
@@ -197,6 +195,6 @@ function completeCheck(task){
 }
 
 
-function dateCompletedCheck () {
-    
+function dateCompletedCheck() {
+
 }
