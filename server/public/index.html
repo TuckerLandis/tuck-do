@@ -7,8 +7,15 @@
     <script src="vendors/jquery-3.3.1.min.js"></script>
     <script src="scripts/client.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- above and below added -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <!-- <script src="js/parse.min.js"></script> -->
+
     <link rel="stylesheet" href="/vendors/bootstrap.css">
     <link rel="stylesheet" href="/vendors/bootstrap.css.map">
     <link rel="stylesheet" href="styles/style.css">
@@ -23,18 +30,28 @@
         
     </header>
 
-    <div id="form-box">
+    <div id="form-box" class="container-fluid">
         <!-- <form>  -->
             <input class="form-control form-control-lg" type="text" placeholder="More work?" id="text-in">
             <button class="btn btn-outline"id="submit-btn" >+</button>
+
+            <p id="date-picker-p">When: <input type="text" id="datepicker"></p>
+
+            <script>
+                $( function() {
+                  $( "#datepicker" ).datepicker();
+                } );
+                </script>
         <!-- </form> -->
      </div>
 
-     <div id="tasks-box">
+
+
+     <div id="tasks-box" class="container-fluid">
         <table>
             <thead>
                 <tr>
-                    <th colspan="3"></th>
+                    <th colspan="4"></th>
                 </tr>
             </thead>
             <tbody id="tasks-table">
