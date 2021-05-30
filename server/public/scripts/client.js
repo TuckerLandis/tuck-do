@@ -143,14 +143,20 @@ console.log('set class is ', setClass);
 
 
         $('#tasks-table').append(`
-            <tr class="${setClass} tdc space">
+            <tr class="${setClass} tdc">
                     <td>${task.text}</td>
-                    <td>${d}</td>
-                    <td><button class="complete-btn btn btn-success" data-id="${task.id}"> ✔️ </button></td>
-                    <td><button class="delete-btn btn btn-danger" data-id="${task.id}"> ❌ </button></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   
                     
              </tr>
              
+             <tr class="${setClass} tdc">
+             <td>${d}</td>
+             <td><button class="complete-btn btn btn-success" data-id="${task.id}"> ✔️ </button></td>
+             <td><button class="delete-btn btn btn-danger" data-id="${task.id}"> ❌ </button></td>
+             </tr>
         `)
 
 
