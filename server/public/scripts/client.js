@@ -14,11 +14,30 @@ function clickListeners() {
 }
 
 /**Takes the return of createTaskObject and sends it to the server via an ajax POST, then empties the input
+ * includes form validation from sweet alert
  */
 function addTask() {
 
     newTask = createTaskObject();
     console.log('created new task!', newTask);
+
+    if ($('#text-in').val() == '' ) {
+        Swal.fire({
+            text: "What do you need to do?",
+            timer: 3000
+        })
+        return;
+    }
+
+
+
+    if ($('#datepicker').val() == '' ) {
+        Swal.fire({
+            text: "When do you need to do this?",
+            timer: 3000
+        })
+        return;
+    }
 
     $.ajax({
         method: 'POST',
