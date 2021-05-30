@@ -1,22 +1,4 @@
-.complete {
-    background-color:lavender;    
-    opacity: 0.75;
-    width: 70%;
-    height: 2em;
-    border: 10px solid white;
-    text-decoration: line-through;
-}
 
-.incomplete {  
-    width: 70%;
-    height: 2em;
-    background-color: silver;
-    border: 1px solid lightblue;
-    box-shadow: 3px 3px 3px skyblue;
-
-    
-    
-}
 
 #form-box{
     display: flex;
@@ -77,4 +59,24 @@ h1 {
     background-color: silver;
    
     box-shadow: 5px 5px 5px black;
+}
+
+.complete {
+    background-color:lavender;    
+    opacity: 0.75;
+    width: 70%;
+    height: 2em;
+    border: 10px solid white;
+    text-decoration: line-through;
+}
+
+.incomplete {  
+    width: 70%;
+    height: 2em;
+    background-color: silver;
+    border: 1px solid lightblue;
+    box-shadow: 3px 3px 3px skyblue;
+
+    
+    
 }

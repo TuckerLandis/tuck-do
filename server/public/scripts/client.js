@@ -110,6 +110,7 @@ function renderTasks(tasks) {
     console.log(tasks);
     
     let setClass ='';
+    
    
     $('#tasks-table').empty();
     tasks.forEach(task => {
@@ -132,21 +133,24 @@ function renderTasks(tasks) {
     
     console.log(today);
 
+    
+    let due ='';
+
     if (d < today) {
         console.log('its due today!');
-        setClass = "due-today"
+        due += " !! "
         
     } else {
         console.log('got some time');
         
     }
     
-    
     if(task.complete){
-        setClass = "complete"
+        setClass += " complete "
     } else {
-        setClass = "incomplete"
+        setClass += " incomplete "
     }
+   
     
     
 
@@ -154,12 +158,13 @@ function renderTasks(tasks) {
     d = d.toLocaleString('default', options );
 
     
- 
+    
+    
 
         $('#tasks-table').append(`
             <tr class="${setClass} space">
                     <td>${task.text}</td>
-                    <td>${d}</td>
+                    <td>${d} ${due}</td>
                     <td><button class="complete-btn btn btn-success" data-id="${task.id}"> ✔️ </button></td>
                     <td><button class="delete-btn btn btn-danger" data-id="${task.id}"> ❌ </button></td>
              </tr>
