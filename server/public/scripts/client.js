@@ -45,7 +45,7 @@ function addTask() {
         data: newTask
     }).then(response => {
         $('#text-in').val('');
-        $('#datepicker').val('');
+        $('#datepicker').val('🗓');
         refreshTasks();
     })
 }
@@ -222,5 +222,5 @@ function completeCheck(task) {
 
 
 function dateCompletedCheck() {
-    
+
 }
