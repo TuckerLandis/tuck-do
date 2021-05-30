@@ -17,7 +17,7 @@ table{
 }
 
 #text-in{
-    width: 70%;
+    width: 65%;
     
 }
 
@@ -30,6 +30,7 @@ header{
 
 
 tr.space>td {
+    margin: 2em;
     padding: 1em;
     max-width: fit-content;
   }
@@ -52,16 +53,16 @@ h1 {
     font-size: 20px;
 }
 
-.due-today{
+/* .due-today{
     border:4px dashed yellow;
     width: 70%;
     height: 2em;
     background-color: silver;
    
-    box-shadow: 5px 5px 5px black;
-}
+box-shadow: 5px 5px 5px black;
+} */
 
-.complete {
+/* .complete {
     background-color:lavender;    
     opacity: 0.75;
     width: 70%;
@@ -76,7 +77,32 @@ h1 {
     background-color: silver;
     border: 1px solid lightblue;
     box-shadow: 3px 3px 3px skyblue;
-
     
+} */
+
+.tdc {
+    width: 70%;
+    height: 2em;
+    background-color: rgba(210, 245, 250, 0.411);
+    border: 20px solid white;
+    box-shadow: 3px 3px 3px skyblue;
+
+}
+
+.complete {
+    opacity: 0.75;
+    width: 60%;
+    height: 2em;
+    border: 20px solid white;
+    text-decoration: line-through;
+    background-color: lightpink;  
+    box-shadow: 3px 3px 3px skyblue;
+}
+
+.due{
+    width: 70%;
+    height: 2em;
+    border: 20px solid white;
+   
     
 }
