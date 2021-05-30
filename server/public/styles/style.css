@@ -3,7 +3,7 @@ body {
     background-color: #d7ebecc0;
 }
 
-#form-box{
+.form-box{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,8 +38,8 @@ header{
 #datepicker {
     padding-top: 1em;
     margin-top: 1em;
-    height: 50%;
-    width: 50%;
+    height: 20%;
+    width: 25%;
     box-shadow: 3px 3px 3px gray
 }
 
@@ -62,7 +62,7 @@ tr.space>td {
 
 #date-picker-p{
     
-    margin-left: 1em; 
+ width: 25%;
 
 }
 

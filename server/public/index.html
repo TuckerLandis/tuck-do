@@ -30,21 +30,31 @@
         
     </header>
 
-    <div id="form-box" class="container-fluid">
-        <!-- <form>  -->
+    <div class="form-box container-fluid">
+     
             <input class="form-control form-control-lg" type="text" placeholder="More work?" id="text-in">
-            <p id="date-picker-p">Due: <input type="text" id="datepicker"></p>
-
-            <script>
-                $( function() {
-                  $( "#datepicker" ).datepicker();
-                } );
-                </script>
-        <!-- </form> -->
+            
+       
      </div>
-     <div id="form-box" class="container-fluid">
+
+     <div class="form-box container-fluid">
+        <p id="date-picker-p">Due: <input type="text" id="datepicker"></p>
+
+        <script>
+            $( function() {
+              $( "#datepicker" ).datepicker();
+            } );
+            </script>
+
+<button class="btn btn-outline"id="submit-btn" >+</button>
+
+     </div>
+
+     <!-- <div class="form-box container-fluid">
      <button class="btn btn-outline"id="submit-btn" >+</button>
-    </div>
+    </div> -->
+
+
      <div id="tasks-box" class="container-fluid">
         <table>
             <thead>
