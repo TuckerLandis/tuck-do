@@ -84,3 +84,10 @@ server folder
                 --bootstrap
                 --bootstrap-map
                 --other libs?
+
+
+
+                on date ----- take in date val from input for object --check
+                change db to have date column, pulled from object newTask, also returned in GET, appended in renderer   
+                figure out mime type style sheet errors     
+                if date is today -- show yellow -- client
