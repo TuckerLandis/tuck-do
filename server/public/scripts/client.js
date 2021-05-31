@@ -29,8 +29,6 @@ function addTask() {
         return;
     }
 
-
-
     if ($('#datepicker').val() == '' ) {
         Swal.fire({
             text: "When do you need to do this?",
@@ -91,7 +89,9 @@ function deleteTask() {
     })
 }
 
-
+/**When a complete button is pressed on the dom, sends a PUT to update the task's complete property and sets complete date to 
+ * present server time
+ */
 function completeTask() {
     console.log('completeclick');
     let taskID = $(this).data('id');
@@ -116,10 +116,7 @@ function refreshTasks() {
         console.log('GET response:', response);
         renderTasks(response)
     })
-} // end refreshTasks
-
-
-
+} 
 
 /** Takes in a parameter of the response of the above GET, and loops over it, appending td with the text, buttons including the id
  * also runs dueCheck and coming soon: completeCheck, for append styling
@@ -137,21 +134,12 @@ function renderTasks(tasks) {
 
         task.dueDate = new Date(task.dueDate); // changes sql date to JS date, this is weird, moment is likely better, as seen in duecheck function
     
-        
 
        if (completeCheck(task)) {
            completeAppender(task);
        } else {
            incompleteAppender(task);
        }
-        
-
-        
-
-
-       
-
-
 
     });
 }
@@ -180,6 +168,9 @@ function dueCheck(task) {
 
 }
 
+/**Called in renderTasks, performs simple true false logic
+ * @param  {} task
+ */
 function completeCheck(task) {
     if (task.complete) {
         return true;
@@ -188,45 +179,10 @@ function completeCheck(task) {
     }
 }
 
-
-function dateCompletedCheck() {
-
-}
-
-function completeAppender(task) {
-    let options = {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric'
-    };
-    
-    let d = task.dueDate
-    d = d.toLocaleString('default', options); // sets date to just day and month, with weekday included
-
-
-    $('#completed-tasks-table').append(`
-    <tr class="complete tdc space">
-        <td class="task-text">${task.text}</td>
-        <td></td>
-        <td></td>
-        <td><button class="complete-btn btn btn-success box-shadow" data-id="${task.id}"> ✔️ </button></td>
-     </tr>
-     
-     <tr class="complete tdc space">
-        <td class="task-date"> Due: ${d}</td>
-         <td></td>
-         <td></td>
-         <td><button class="delete-btn btn btn-danger box-shadow" data-id="${task.id}"> ✖ </button> </td>
-     </tr>
-    <tr class="data-space">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    <tr>
-`)
-}
-
+/**If current task in the tasks loop in renderTasks is incomplete, this is called on that task
+ * it appends it to a table near the top of the DOM, and displays the date it is due
+ * @param  {} task
+ */
 function incompleteAppender(task) {
     let options = {
         weekday: 'long',
@@ -248,6 +204,50 @@ function incompleteAppender(task) {
      
      <tr class="incomplete tdc space">
         <td class="task-date"> Due: ${d}</td>
+         <td></td>
+         <td></td>
+         <td><button class="delete-btn btn btn-danger box-shadow" data-id="${task.id}"> ✖ </button> </td>
+     </tr>
+    <tr class="data-space">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    <tr>
+`)
+}
+
+/**If current task in the tasks loop in renderTasks is complete, this is called on that task
+ * it appends it to a seperate table below, and displays the date it was completed
+ * @param  {} task
+ */
+ function completeAppender(task) {
+   
+    task.completeDate = new Date(task.completeDate);
+    
+
+    console.log(task.completeDate);
+    
+    let options = {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    let cD = task.completeDate;
+    cD = cD.toLocaleString('default', options); // sets date to just day and month, with weekday included
+
+
+    $('#completed-tasks-table').append(`
+    <tr class="complete tdc space">
+        <td class="task-text">${task.text}</td>
+        <td></td>
+        <td></td>
+        <td><button class="complete-btn btn btn-success box-shadow" data-id="${task.id}"> ✔️ </button></td>
+     </tr>
+     
+     <tr class="complete-no-strike tdc space">
+        <td class="task-date"> Completed: ${cD}</td>
          <td></td>
          <td></td>
          <td><button class="delete-btn btn btn-danger box-shadow" data-id="${task.id}"> ✖ </button> </td>
