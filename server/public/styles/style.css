@@ -73,9 +73,29 @@ h1 {
 }
 
 .complete-header{
+    margin-left: 8em;
+    margin-right: 8em;
+    text-align: center;
+    text-decoration: underline;
+    background-color: lightpink;
+    box-shadow: 3px 3px 3px skyblue;
+}
+
+.incomplete-header{
+    margin-left: 8em;
+    margin-right: 8em;
     text-align: center;
     text-decoration: underline;
     background-color: #96d7da;
+    box-shadow: 3px 3px 3px skyblue;
+}
+
+.due-header{
+    margin-left: 8em;
+    margin-right: 8em;
+    text-align: center;
+    text-decoration: underline;
+    background-color: lightgoldenrodyellow;
     box-shadow: 3px 3px 3px skyblue;
 }
 
@@ -107,6 +127,7 @@ h1 {
 
 #tasks-box{
     display: flexbox; 
+   
 }
 
 #text-in{

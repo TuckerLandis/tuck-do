@@ -128,9 +128,14 @@ function renderTasks(tasks) {
 
     tasks.forEach(task => {
         
+        if (dueCheck(task)) {
+            dueAppender(task);
+            // return ?
+        }
+
        if (completeCheck(task)) {
            completeAppender(task);
-       } else {
+       } else if (!dueCheck(task)){
            incompleteAppender(task);
        }
     });
@@ -140,6 +145,7 @@ function renderTasks(tasks) {
  * @param  {} task
  */
 function dueCheck(task) {
+    task.dueDate = new Date(task.dueDate);
     
 
     let today = new Date(); // gets today
@@ -177,7 +183,7 @@ function completeCheck(task) {
  */
 function incompleteAppender(task) {
     task.dueDate = new Date(task.dueDate);
-    
+
     let options = {
         weekday: 'long',
         month: 'long',
@@ -238,6 +244,47 @@ function incompleteAppender(task) {
      
      <tr class="complete-no-strike tdc space">
         <td class="task-date"> Completed: ${cD}</td>
+         <td></td>
+         <td></td>
+         <td><button class="delete-btn btn btn-danger box-shadow" data-id="${task.id}"> ✖ </button> </td>
+     </tr>
+    <tr class="data-space">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    <tr>
+`)
+}
+
+
+/**If current task in the tasks loop in renderTasks is due today, this is called on that task
+ * it appends it to the due today table
+ * @param  {} task
+ */
+ function dueAppender(task) {
+   
+    task.dueDate = new Date(task.dueDate);
+
+    let options = {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric'
+    };
+    
+    let d = task.dueDate
+    d = d.toLocaleString('default', options); // sets date to just day and month, with weekday included
+
+    $('#due-tasks-table').append(`
+    <tr class="due tdc space">
+        <td class="task-text">${task.text}</td>
+        <td></td>
+        <td></td>
+        <td><button class="complete-btn btn btn-success box-shadow" data-id="${task.id}"> ✔️ </button></td>
+     </tr>
+     
+     <tr class="due tdc space">
+        <td class="task-date"> Due Today! ${d}</td>
          <td></td>
          <td></td>
          <td><button class="delete-btn btn btn-danger box-shadow" data-id="${task.id}"> ✖ </button> </td>

@@ -44,8 +44,6 @@ front end elements
 
 * Whether or not a Task is complete should also be stored in the database.
 
-    -yea for sure bro
-
 
 * Deleting a Task should remove it both from the front end as well as the Database.
     -- accomplished in get/ render based on properties
