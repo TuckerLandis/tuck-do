@@ -3,28 +3,8 @@ body {
     background-color: #d7ebecc0;
 }
 
-.form-box{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2em;
-}
-
-#tasks-box{
-    display: flexbox;
-   
-}
-
 table{
     margin: auto;
-    /* border-collapse: separate;
-    border-spacing: 0 15px; */
-}
-
-#text-in{
-    width: 50%;
-    box-shadow: 3px 3px 3px gray;
-    
 }
 
 header{
@@ -35,45 +15,21 @@ header{
     text-align: center;
 }
 
-#datepicker {
-    width: 5em;
-    background-color: silver;
-    border:2px solid lightslategrey;
-    box-shadow: 3px 3px 3px skyblue;
-    margin-left: 1em;
-    margin-right: 1em;
-    box-shadow: 3px 3px 3px gray
-}
-
 tr.space>td {
     margin: 1em;
     padding: 0.5em;
     max-width: fit-content;
   }
 
-#submit-btn{
-    
-    background-color: silver;
-    border:2px solid lightslategrey;
-    box-shadow: 3px 3px 3px skyblue;
-    margin-left: 1em;
-    margin-right: 1em;
-    width: 10em;
-
-}
-
-
 h1 {
     font-size: 32pt;
     text-shadow: 2px 2px paleturquoise;
 }
 
-
 .tdc {
     width: 70%;
     height: 2em;
     background-color: #96d7da;
-
 }
 
 .complete {
@@ -81,6 +37,13 @@ h1 {
     width: 60%;
     height: 2em;
     text-decoration: line-through;
+    background-color: lightpink;  
+}
+
+.complete-no-strike {
+    opacity: 0.5;
+    width: 60%;
+    height: 2em;
     background-color: lightpink;  
 }
 
@@ -112,4 +75,39 @@ h1 {
 .complete-header{
     text-align: center;
     text-decoration: underline;
+}
+
+.form-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+#submit-btn{
+    background-color: silver;
+    border:2px solid lightslategrey;
+    box-shadow: 3px 3px 3px skyblue;
+    margin-left: 1em;
+    margin-right: 1em;
+    width: 10em;
+}
+
+#datepicker {
+    width: 5em;
+    background-color: silver;
+    border:2px solid lightslategrey;
+    box-shadow: 3px 3px 3px skyblue;
+    margin-left: 1em;
+    margin-right: 1em;
+    box-shadow: 3px 3px 3px gray
+}
+
+#tasks-box{
+    display: flexbox; 
+}
+
+#text-in{
+    width: 50%;
+    box-shadow: 3px 3px 3px gray;
 }
