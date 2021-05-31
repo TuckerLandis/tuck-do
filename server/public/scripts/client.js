@@ -125,6 +125,7 @@ function renderTasks(tasks) {
 
     $('#tasks-table').empty();
     $(`#completed-tasks-table`).empty();
+    $(`#due-tasks-table`).empty();
 
     tasks.forEach(task => {
         
