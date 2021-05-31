@@ -75,6 +75,8 @@ h1 {
 .complete-header{
     text-align: center;
     text-decoration: underline;
+    background-color: #96d7da;
+    box-shadow: 3px 3px 3px skyblue;
 }
 
 .form-box{

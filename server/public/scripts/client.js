@@ -11,6 +11,7 @@ function clickListeners() {
     $('#submit-btn').on('click', addTask);
     $('#tasks-table').on('click', '.complete-btn', completeTask);
     $('#tasks-table').on('click', '.delete-btn', deleteTask);
+    $('#completed-tasks-table').on('click', '.delete-btn', deleteTask)
 }
 
 /**Takes the return of createTaskObject and sends it to the server via an ajax POST, then empties the input
@@ -99,16 +100,13 @@ function completeTask() {
         method: 'PUT',
         url: `/tasks/${taskID}`,
     })
-
     refreshTasks();
-
 }
 
 /**Performs a simple GET to refresh the tasks, and calls renderTasks
  */
 function refreshTasks() {
-    console.log('refreshing tasks');
-
+    
     $.ajax({
         method: 'GET',
         url: '/tasks',
@@ -129,18 +127,12 @@ function renderTasks(tasks) {
     $(`#completed-tasks-table`).empty();
 
     tasks.forEach(task => {
-        console.log('tdd in ', task.dueDate);
-
-
-        task.dueDate = new Date(task.dueDate); // changes sql date to JS date, this is weird, moment is likely better, as seen in duecheck function
-    
 
        if (completeCheck(task)) {
            completeAppender(task);
        } else {
            incompleteAppender(task);
        }
-
     });
 }
 
@@ -148,7 +140,7 @@ function renderTasks(tasks) {
  * @param  {} task
  */
 function dueCheck(task) {
-    // let d = new Date(task.dueDate); // sets task's due date value to d
+    task.dueDate = new Date(task.dueDate);
 
     let today = new Date(); // gets today
     today = today.setHours(00, 00, 00, 00); // sets today to this morning
@@ -225,9 +217,6 @@ function incompleteAppender(task) {
    
     task.completeDate = new Date(task.completeDate);
     
-
-    console.log(task.completeDate);
-    
     let options = {
         weekday: 'long',
         month: 'long',
@@ -236,7 +225,6 @@ function incompleteAppender(task) {
 
     let cD = task.completeDate;
     cD = cD.toLocaleString('default', options); // sets date to just day and month, with weekday included
-
 
     $('#completed-tasks-table').append(`
     <tr class="complete tdc space">
