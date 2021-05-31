@@ -53,18 +53,18 @@ router.put('/:id', (req, res) => {
     console.log('got to task-put');
     console.log('completing', req.params.id);
 
-    let queryText = `UPDATE "tasks" SET "complete"='true'  WHERE "tasks".id = $1;`;
+    let completeDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    let queryText = `UPDATE "tasks" SET "complete"='true', "completeDate"='${completeDate}' WHERE "tasks".id = $1;`;
     
     pool.query(queryText, [req.params.id])
     .then(result => {
       res.sendStatus(200);
     })
     .catch(error => {
-      console.log(`Error deleting task`, error);
+      console.log(`Error updating task`, error);
       res.sendStatus(500);
     });
-    
-    
     
 })
 
