@@ -104,3 +104,8 @@ h1 {
 .task-date{
     font-size: 10pt;
 }
+
+.complete-header{
+    text-align: center;
+    text-decoration: underline;
+}
