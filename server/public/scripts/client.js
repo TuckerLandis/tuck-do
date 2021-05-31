@@ -10,8 +10,11 @@ $(document).ready(function () {
 function clickListeners() {
     $('#submit-btn').on('click', addTask);
     $('#tasks-table').on('click', '.complete-btn', completeTask);
+    $('#completed-tasks-table').on('click', '.complete-btn', completeTask);
+    $('#due-tasks-box').on('click', '.complete-btn', completeTask);
     $('#tasks-table').on('click', '.delete-btn', deleteTask);
-    $('#completed-tasks-table').on('click', '.delete-btn', deleteTask)
+    $('#completed-tasks-table').on('click', '.delete-btn', deleteTask);
+    $('#due-tasks-table').on('click', '.delete-btn', deleteTask);
 }
 
 /**Takes the return of createTaskObject and sends it to the server via an ajax POST, then empties the input
@@ -95,6 +98,8 @@ function deleteTask() {
  */
 function completeTask() {
     console.log('completeclick');
+    console.log(this);
+    
     let taskID = $(this).data('id');
     $.ajax({
         method: 'PUT',
@@ -124,20 +129,21 @@ function renderTasks(tasks) {
     console.log(tasks);
 
     $('#tasks-table').empty();
-    $(`#completed-tasks-table`).empty();
-    $(`#due-tasks-table`).empty();
+    $('#completed-tasks-table').empty();
+    $('#due-tasks-table').empty();
 
     tasks.forEach(task => {
         
-        if (dueCheck(task)) {
+        if (dueCheck(task) == true && completeCheck(task) == false) {
             dueAppender(task);
-            // return ?
+            return;
         }
-
-       if (completeCheck(task)) {
+         else if (completeCheck(task)) {
            completeAppender(task);
-       } else if (!dueCheck(task)){
+           return;
+       } else {
            incompleteAppender(task);
+           
        }
     });
 }
@@ -156,7 +162,7 @@ function dueCheck(task) {
     console.log('task.dueDate', task.dueDate);
     console.log('today', today);
 
-    if (task.dueDate < today) {
+    if (task.dueDate <= today) {
         console.log('its due today!');
         return true;
 
