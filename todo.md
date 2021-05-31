@@ -91,3 +91,12 @@ server folder
                 change db to have date column, pulled from object newTask, also returned in GET, appended in renderer   
                 figure out mime type style sheet errors     
                 if date is today -- show yellow -- client
+
+
+
+
+                -----5/31
+
+                    due check == today appender
+                    non due = upcoming
+                    ehhhh done?

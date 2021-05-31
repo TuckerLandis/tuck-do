@@ -127,7 +127,7 @@ function renderTasks(tasks) {
     $(`#completed-tasks-table`).empty();
 
     tasks.forEach(task => {
-
+        
        if (completeCheck(task)) {
            completeAppender(task);
        } else {
@@ -140,7 +140,7 @@ function renderTasks(tasks) {
  * @param  {} task
  */
 function dueCheck(task) {
-    task.dueDate = new Date(task.dueDate);
+    
 
     let today = new Date(); // gets today
     today = today.setHours(00, 00, 00, 00); // sets today to this morning
@@ -176,6 +176,8 @@ function completeCheck(task) {
  * @param  {} task
  */
 function incompleteAppender(task) {
+    task.dueDate = new Date(task.dueDate);
+    
     let options = {
         weekday: 'long',
         month: 'long',

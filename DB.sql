@@ -1,12 +1,7 @@
 CREATE TABLE "tasks" (
 "id" SERIAL PRIMARY KEY,
 "text" VARCHAR(250) NOT NULL,
-"complete" BOOLEAN DEFAULT false
+"dueDate" DATE,
+"complete" BOOLEAN DEFAULT false,
+"completeDate" DATE
 );
-
-INSERT INTO "tasks"
-("text", "complete")
-VALUES
-('make this app', false);
-
-SELECT * FROM "tasks";
